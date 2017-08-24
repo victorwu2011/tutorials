@@ -5,10 +5,10 @@ import javax.xml.ws.Endpoint;
 public class Server {
     public static void main(String args[]) throws InterruptedException {
         BaeldungImpl implementor = new BaeldungImpl();
-        String address = "http://localhost:8080/baeldung";
+        String address = "http://localhost:7001/baeldung";
         Endpoint.publish(address, implementor);
         System.out.println("Server ready...");
-        Thread.sleep(60 * 1000);
+        Thread.sleep(600 * 1000);
         System.out.println("Server exiting");
         System.exit(0);
     }

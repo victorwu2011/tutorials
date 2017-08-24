@@ -19,9 +19,13 @@ import org.apache.http.impl.client.HttpClients;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+@RunWith(MockitoJUnitRunner.class)
 public class ServiceLiveTest {
     private static final String BASE_URL = "http://localhost:8080/baeldung/courses/";
+    
+//    http://localhost:8080/baeldung/courses/
     private static CloseableHttpClient client;
 
     @BeforeClass

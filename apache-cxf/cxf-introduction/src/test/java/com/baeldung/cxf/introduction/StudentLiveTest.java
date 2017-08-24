@@ -10,6 +10,8 @@ import javax.xml.ws.soap.SOAPBinding;
 
 import org.junit.Before;
 import org.junit.Test;
+//http://172.21.11.154:7001/cxf-spring/BaeldungImplService
+
 
 public class StudentLiveTest {
     private static QName SERVICE_NAME = new QName("http://introduction.cxf.baeldung.com/", "Baeldung");
@@ -21,25 +23,25 @@ public class StudentLiveTest {
 
     {
         service = Service.create(SERVICE_NAME);
-        final String endpointAddress = "http://localhost:8080/baeldung";
+        final String endpointAddress = "http://localhost:7001/baeldung";
         service.addPort(PORT_NAME, SOAPBinding.SOAP11HTTP_BINDING, endpointAddress);
     }
 
     @Before
-    public void reinstantiateBaeldungInstances() {
+    public void test_reinstantiateBaeldungInstances() {
         baeldungImpl = new BaeldungImpl();
         baeldungProxy = service.getPort(PORT_NAME, Baeldung.class);
     }
 
     @Test
-    public void whenUsingHelloMethod_thenCorrect() {
+    public void test_whenUsingHelloMethod_thenCorrect() {
         final String endpointResponse = baeldungProxy.hello("Baeldung");
         final String localResponse = baeldungImpl.hello("Baeldung");
         assertEquals(localResponse, endpointResponse);
     }
 
     @Test
-    public void whenUsingHelloStudentMethod_thenCorrect() {
+    public void test_whenUsingHelloStudentMethod_thenCorrect() {
         final Student student = new StudentImpl("John Doe");
         final String endpointResponse = baeldungProxy.helloStudent(student);
         final String localResponse = baeldungImpl.helloStudent(student);
@@ -47,7 +49,7 @@ public class StudentLiveTest {
     }
 
     @Test
-    public void usingGetStudentsMethod_thenCorrect() {
+    public void test_usingGetStudentsMethod_thenCorrect() {
         final Student student1 = new StudentImpl("Adam");
         baeldungProxy.helloStudent(student1);
 
